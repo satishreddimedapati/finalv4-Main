@@ -1,0 +1,414 @@
+/* Add these styles to your global styles or component-specific styles */
+
+/* User Info Grid Styles */
+.user-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .user-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust based on the number of user info items */
+    gap: 10px;
+  }
+  
+  .user-info-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Dates and Amount Grid Styles */
+  .dates-amount-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+  
+  .dates-amount-header,
+  .dates-amount {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Popup Styles */
+  .popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .popup-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+  
+  .popup-row {
+    display: flex;
+  }
+  
+  .popup-item {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Button Styles */
+  button {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  /* view-data.component.css */
+  
+  .user-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .user-tile {
+    border: 2px solid #72bcd4; /* Light Purple border */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding and border in total width/height */
+    width: calc(33.33% - 20px); /* 33.33% width with 20px (left and right) gap between elements */
+  }
+  /* Popup styles */
+  .installments-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #f2f2f2; /* Light Gray background */
+    border: 2px solid #72bcd4; /* Green border */
+    border-radius: 10px;
+    max-width: 500px; /* Adjust this value as needed */
+    /* max-height: 400px;  Uncomment and adjust if you want to limit height */
+    text-align: center;
+    /* Make it scrollable */
+}
+
+  
+  .installments-data {
+    display: flex;
+  
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-height: 500px; /* Set a maximum height */
+    overflow-y: auto; 
+  }
+  /* Add this to your CSS */
+  .installments-popup .field-container .monthly {
+    border: 2px solid red;
+  }
+  /* Add this to your CSS */
+  .user-tiles .user-tile.monthly {
+    border: 2px solid red;
+  }
+  
+  
+  /* Add this clearfix style */
+  .clearfix {
+    clear: both;
+  }
+ .account-popup {
+    background-color: #ffffff; /* White background */
+    border: 2px solid #3498db; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the popup */
+    box-shadow: 0 0 10px rgba(188, 15, 15, 0.1); /* Shadow effect */
+    color: #3498db; /* Blue text color */
+
+  }
+  .accountpopup-section-container {
+    background-color: #f0f0f0; /* Light background color */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    color: #3498db; /* Blue text color */
+  }
+  
+  
+  .account-popup h1 {
+    color: #3498db; /* Blue color for heading */
+    margin-bottom: 10px; /* Bottom margin for heading */
+  }
+  
+  .account-popup p {
+    color: #5344f8; /* Dark color for paragraph text */
+    margin-bottom: 15px; /* Bottom margin for paragraphs */
+  }
+  
+  .account-popup button {
+    background-color: #3498db; /* Blue background for buttons */
+    color: #ffffff; /* White text color for buttons */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding inside buttons */
+    cursor: pointer; /* Cursor style on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 10px; /* Top margin for buttons */
+  }
+  
+  .account-popup button:hover {
+    background-color: #2980b9; /* Darker blue on button hover */
+  }
+  
+  
+  .date-row {
+    width: calc(25% - 10px); /* 25% width with 10px margin between elements */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+    border: 2px solid #72bcd4; /* Green border */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .date-header {
+    font-weight: bold;
+  }
+  
+  .date-row > div {
+    margin-top: 5px;
+  
+  }
+  
+  .button-container {
+    text-align: center;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    background-color: #ddd; /* Background color for the button */
+    padding: 8px 12px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .field-container {
+    display: flex;
+    align-items: center;
+    color: blue;
+    margin-bottom: 10px; /* Optional: add margin between each field-container */
+  }
+  
+  .field-container label {
+    margin-right: 10px;
+  }
+  .closed-account-popup {
+    background-color: rgb(135, 208, 250); /* Light Red background for closed account */
+  }
+  .account-section-container {
+    background-color: #f0f0f0; /* Light background color */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  }
+  
+  .account-section-container h2 {
+    margin-bottom: 10px; /* Add spacing below the heading */
+    color: #333; /* Dark color for the heading */
+  }
+  
+  .account-section-container p {
+    margin-bottom: 5px; /* Add spacing below each paragraph */
+    color: #555; /* Darker color for the text */
+  }
+  
+  .account-section-container p:first-child {
+    margin-top: 0; /* Remove top margin for the first paragraph */
+  }
+  
+  
+  /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .title-container {
+    text-align: center;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .title-container img {
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+  }
+  
+  h1 {
+    display: inline-block;
+    margin: 0;
+  }
+  
+  .file-upload-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .file-upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .file-upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  
+  .file-upload-btn-wrapper .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .filter-section {
+    margin-left: 20px;
+  }
+  .account-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .total-amount-section {
+    margin-top: 20px;
+  }
+  
+  /* Add any additional styling as needed */
+  .popup {
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 200px; /* Increase padding to increase the size */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 80%; /* Increase width */
+    max-width: 600px; /* Set maximum width */
+    overflow-y: auto;
+
+  }
+  
+  .popup-content {
+    text-align: center;
+    overflow-y: auto;
+
+  }
+  
+  .popup button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .popup button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .total-collection {
+    margin-top: 20px;
+  }
+  
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 20px;
+  }
+  
+  .styled-table th,
+  .styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .styled-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .styled-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .styled-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  .red-users-list {
+    margin-top: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .red-user {
+    margin-bottom: 10px;
+    border: 1px solid red; /* Add border */
+    border-radius: 55px; /* Optional: Add border-radius */
+    padding: 10px; /* Optional: Add padding */
+
+  }
+  
+  .red-user-info {
+    font-weight: bold;
+  }
+  
