@@ -7,18 +7,22 @@
 <!-- Popup for Red Users -->
 <div class="popup" *ngIf="isRedUsersPopupOpen">
   <div class="popup-content">
-    <h2>Red Users List</h2>
+    <span>  Red Users List</span>
     <div class="red-users-list">
       <div *ngFor="let user of originalData">
         <ng-container *ngIf="isRedUser(user)">
           <p class="red-user-info" [ngClass]="{'red-user': true}"> (S.No: {{ user.sno }}) {{ user.name }}  - Mobile: {{ user.mobile }}</p>
           <!-- Add any additional information about red users here -->
         </ng-container>
+       
       </div>
     </div>
+      <button class="sharebutton" (click)="shareRedUsers('filename')">Share</button>
     <button class="close-button" (click)="closeRedUsersPopup()">Close</button>
   </div>
 </div>
+
+
 
 
 <button (click)="openDataOverviewPopup()">Data Overview</button>
@@ -45,6 +49,7 @@
     <p>Total Interest Amount: {{ getTotalAmountToPayForAllUsers() }}</p>
     <p>Total Collection Till Now: {{ getTotalAmountForAllUsers() }}</p>
     <p>Remaining Total: {{ calculateRemainingTotal() }}</p>
+    <button class="accountshare" (click)="shareTotalAccountSummary()">Share Total Account Summary</button>
 
 
     <!-- Expense input field -->
@@ -143,6 +148,8 @@
         <label>Amount to Pay:</label>
         <div>{{ user.amountToPay }}</div>
       </div>
+      <!-- Inside the installment popup -->
+
     </div>
   </div>
  

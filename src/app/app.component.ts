@@ -50,6 +50,7 @@ graphVisible: boolean = false;
 chart: Chart | null = null;
 isDataOverviewPopupOpen: boolean = false;
 isWeeklyCollectionPopupOpen: boolean = false;
+uploadedFileName: string = ''; // Property to store the uploaded file name
 
 selectedMonth: string = '';
 selectedDayOfWeek: number = 3;
@@ -444,6 +445,8 @@ uploadFromExcel(event: Event): void {
   const file: File | null = (inputElement.files && inputElement.files[0]) || null;
 
   if (file) {
+    this.uploadedFileName = file.name; // Store the uploaded file name
+
     const reader = new FileReader();
 
     reader.onload = (e: any) => {
@@ -486,6 +489,8 @@ uploadFromExcel(event: Event): void {
       this.originalData.forEach(user => {
         this.openInstallmentsPopups(user);
       });
+      // this.shareRedUsers(file.name);
+
 
       this.changeDetectorRef.detectChanges();
     };
@@ -836,4 +841,55 @@ isRedUser(user: any): boolean {
 closeRedUsersPopup(){
   this.isRedUsersPopupOpen=false;
 }
+shareRedUsers(fileName: string): void {
+  // Filter data to find red users
+  debugger;
+        // this.shareRedUsers(file.name);
+
+  const redUsers = this.originalData.filter(user => this.isRedUser(user));
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString();
+
+  // Construct message containing today's date and total account summary
+  let message = `Date: ${formattedDate}\n`;
+  // Construct message containing red users' data and file name
+  message += `*File Name: ${this.uploadedFileName}*\n`; // Include the uploaded file name
+  message += `*Red Users List:*\n`; // Bold and large filename
+  redUsers.forEach((user, index) => {
+    message += `${index + 1}. (S.No: ${user.sno}) ${user.name} - Mobile: ${user.mobile}\n`;
+  });
+
+  // Generate WhatsApp share link
+  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+
+  // Open WhatsApp with pre-filled message
+  window.open(whatsappUrl, '_blank');
+}
+
+shareTotalAccountSummaryWithData(fileName: string): void {
+  // Construct message containing total account summary and file name
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString();
+
+  // Construct message containing today's date and total account summary
+  let message = `Date: ${formattedDate}\n`;
+  message += `*File Name: ${fileName}*\n`; // Include the uploaded file name
+  message += `*Total Account Summary:*\n`; // Bold and large section header
+  message += `Total Invested Amount: ${this.calculateTotalAmountForAllUserss()}\n`;
+  message += `Total Interest Amount: ${this.getTotalAmountToPayForAllUsers()}\n`;
+  message += `Total Collection Till Now: ${this.getTotalAmountForAllUsers()}\n`;
+  message += `Remaining Total: ${this.calculateRemainingTotal()}\n`;
+
+  // Generate WhatsApp share link
+  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+
+  // Open WhatsApp with pre-filled message
+  window.open(whatsappUrl, '_blank');
+}
+
+shareTotalAccountSummary(): void {
+  // Call the shareTotalAccountSummaryWithData method passing the uploaded file name
+  this.shareTotalAccountSummaryWithData(this.uploadedFileName);
+}
+
 }
