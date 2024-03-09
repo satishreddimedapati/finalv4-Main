@@ -147,7 +147,9 @@
       <div class="field-container">
         <label>Amount to Pay:</label>
         <div>{{ user.amountToPay }}</div>
+
       </div>
+
       <!-- Inside the installment popup -->
 
     </div>
@@ -165,6 +167,7 @@
     <label>Remaining Amount:</label>
     <div>{{ remainingAmount}}</div>
   </div>
+  <button (click)="shareViaWhatsApp(selectedUser)">Share via WhatsApp</button>
 
   <div class="field-container">
     <label class="amount-to-pay-label">Amount to Pay:</label>

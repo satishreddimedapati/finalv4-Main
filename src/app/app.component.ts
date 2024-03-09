@@ -65,6 +65,8 @@ filteredDates: string[] = []; // To store filtered dates based on selected month
 selectedMonthData: { date: string; amount: number; }[] = [];
 isRedUsersPopupOpen: boolean = false; // New property to control the visibility of the popup for red users
   redUsers: { name: string; sNo: number; }[] = []; // New property to store red users
+// Inside your AppComponent class
+collectedAmount: number = 0; // Initialize it with a default value
 
   constructor(private changeDetectorRef: ChangeDetectorRef,private router: Router) {}
 
@@ -287,7 +289,13 @@ closePopup(): void {
     if (this.isRedUser(user)) {
         this.redUsers.push(user);
     }
+    debugger;
+    // const message = this.shareViaWhatsApp(user);
+    // Now you can share this message using WhatsApp API or any other method
+    // console.log(message); // Assuming you will send it via WhatsApp API
+
   }
+ 
   
   openInstallmentsPopups(user: any): void {
     // Perform remaining amount and amount to pay calculations
@@ -787,7 +795,6 @@ showRedUsers(): void {
 
 // Method to determine if a user is red based on missed payments for three consecutive weeks
 isRedUser(user: any): boolean {
-  debugger;
   if (!user) {
     console.log('User object is null or undefined.');
     return false;
@@ -891,5 +898,49 @@ shareTotalAccountSummary(): void {
   // Call the shareTotalAccountSummaryWithData method passing the uploaded file name
   this.shareTotalAccountSummaryWithData(this.uploadedFileName);
 }
+generateWhatsAppMessage(user: any, totalAmount: number, collectedAmount: number,fileName: string): string {
+  // Call generateWhatsAppMessage with user, totalAmountEntered, and collectedAmount
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString();
 
+  // Construct message containing today's date and total account summary
+  let message = `Date: ${formattedDate}\n`;
+  message += `*File Name: ${fileName}*\n\n`; 
+  message += `Customer S.No :${user.sno}\n`;
+  message+= `Customer Name :${user.name}\n`;
+  // Add remaining amount, amount to pay, total amount, and collected amount
+  message+= `Mobile: ${user.mobile}\n\n`;
+  message += `Amount to Pay: ${user.amountToPay}\n`;
+  message += `Paid Amount: ${totalAmount}\n`;
+  message += `Remaining Amount: ${user.remainingAmount}\n\n`;
+
+  // message += `Collected Amount: ${collectedAmount}\n\n`;
+
+  // Add table headers
+  message += 'Date  \tAmount\n';
+
+  // Iterate through dates and amounts
+  for (const date in user) {
+      if (date.match(/^\d{2}-\d{2}-\d{4}$/)) { // Check if the key is a date in the format DD-MM-YYYY
+          const amount = user[date];
+          if (typeof amount !== 'undefined') { // Check if amount is defined
+              message += `${date}:\t${amount}\n`; // Add date and amount to the message
+          } else {
+              message += `${date}:\t0\n`; // Add date with 0 amount if amount is undefined
+          }
+      }
+  }
+
+  return message;
+}
+
+
+
+
+// Method to open WhatsApp share intent
+shareViaWhatsApp(user: any): void {
+const message = this.generateWhatsAppMessage(this.selectedUser, this.totalAmountEntered, this.collectedAmount,this.uploadedFileName);
+const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, '_blank');
+}
 }
