@@ -244,100 +244,147 @@
   
   /* styles.css */
 
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .title-container {
-    text-align: center;
-    border: 2px solid #333;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .title-container img {
-    width: 50px;
-    height: 50px;
-    margin: 0 5px;
-  }
-  
-  h1 {
-    display: inline-block;
-    margin: 0;
-  }
-  
-  .file-upload-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .file-upload-btn-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-  }
-  
-  .file-upload-btn-wrapper input[type=file] {
-    font-size: 100px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-  }
-  
-  .file-upload-btn-wrapper .btn {
-    border: 2px solid gray;
-    color: gray;
-    background-color: white;
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .filter-section {
-    margin-left: 20px;
-  }
-  .account-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .total-amount-section {
-    margin-top: 20px;
-  }
-  
-  /* Add any additional styling as needed */
-  .popup {
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 200px; /* Increase padding to increase the size */
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    width: 80%; /* Increase width */
-    max-width: 600px; /* Set maximum width */
-    overflow-y: auto;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7; /* Set a light background color */
+}
 
+.title-container {
+  text-align: center;
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff; /* Set a white background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.title-container img {
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+}
+
+h1 {
+  display: inline-block;
+  margin: 0;
+}
+
+/* Button Styles */
+
+
+/* Popup Styles */
+.popup {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 15px; /* Decreased padding */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 85%; /* Adjusted width */
+  max-width: 600px;
+  overflow-y: auto;
+  position: relative; /* Add relative positioning */
+}
+
+.popup .close-button {
+  position: absolute;
+  top: 10px; /* Adjust top position */
+  right: 10px; /* Adjust right position */
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  background-color: #ddd; /* Background color for the button */
+  padding: 8px 12px; /* Adjust padding as needed */
+  border: none;
+  border-radius: 5px;
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup button {
+  display: block;
+  margin-bottom: 10px;
+  padding: 12px 24px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup button:hover {
+  background-color: #e0e0e0;
+}
+
+
+/* Red User Styles */
+.red-users-list {
+  margin-top: 20px; /* Adjust margin */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.red-user {
+  margin: 5px; /* Adjust margin */
+  padding: 10px 20px; /* Adjust padding */
+  border: 2px solid red;
+  border-radius: 55px;
+  font-weight: bold;
   }
+
+.filter-section {
+  margin-left: 20px;
+}
+
+.date-selection-section {
+  margin-top: 20px; /* Adjust margin */
+}
+
+.total-amount-label {
+  margin-top: 20px; /* Adjust margin */
+  font-weight: bold;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-top: 20px;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid #ddd;
+  padding: 10px; /* Adjust padding */
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #f2f2f2;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #ddd;
+}
+
   
   .popup-content {
     text-align: center;
@@ -425,4 +472,238 @@ body {
     color: red;
     background: lightblue;
 }
-  
+.data-overview-popup {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 600px;
+  overflow-y: auto;
+}
+button {
+  padding: 12px 24px; /* Increase padding */
+  margin: 10px; /* Add margin */
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db; /* Blue background color */
+  color: #fff; /* White text color */
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+.weekly-collection-popup {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 600px;
+  overflow-y: auto;
+}
+
+.weekly-collection-popup .popup-content {
+  text-align: center;
+}
+
+.weekly-collection-popup button {
+  display: block;
+  margin-top: 10px;
+  padding: 12px 24px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.weekly-collection-popup button:hover {
+  background-color: #e0e0e0;
+}
+
+.weekly-collection-popup .month-selection-section {
+  margin-bottom: 20px;
+}
+
+.weekly-collection-popup .styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.weekly-collection-popup .styled-table th,
+.weekly-collection-popup .styled-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.weekly-collection-popup .styled-table th {
+  background-color: #f2f2f2;
+}
+
+.weekly-collection-popup .styled-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.weekly-collection-popup .styled-table tbody tr:hover {
+  background-color: #ddd;
+}
+
+.red-user-list-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 600px;
+  max-height: 80vh; /* Set maximum height */
+  overflow-y: auto; /* Add scrollbar */
+}
+
+.red-user-list-popup .red-user {
+  padding: 10px; /* Decrease padding */
+  background-color: #ffcccc; /* Light red background */
+  border: 1px solid #ff0000; /* Red border */
+  border-radius: 8px;
+}
+
+.red-user-list-popup .red-user .red-user-info {
+  font-weight: bold;
+  color: #ff0000; /* Red text */
+}
+
+.red-user-list-popup .red-user:not(:last-child) {
+  margin-bottom: 5px; /* Remove margin between red user cards */
+}
+
+.upload-file-section label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-file-section label:hover {
+  background-color: #2980b9;
+}
+
+.upload-file-section input[type="file"] {
+  display: none;
+}
+
+
+.sidebar {
+  text-align: center;
+  border: 2px solid #333;
+  border-radius: 10px;
+  /* padding: 20px; */
+  margin-bottom: 20px;
+  background-color: #fff;
+  display: flex;
+}
+
+.card-container {
+  display: flex; /* Change to flex */
+  flex-wrap: wrap; /* Allow cards to wrap */
+  gap: 20px; /* Add gap between cards */
+}
+
+.card {
+  flex: 1; /* Distribute space evenly among cards */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.label-container {
+  display: flex; /* Ensure labels and inputs are aligned */
+  align-items: center; /* Align items vertically */
+}
+
+.label-container label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.card-content select,
+.card-content input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.filter-button,
+.generate-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+}
+
+.filter-button:hover,
+.generate-button:hover {
+  background-color: #2980b9;
+}
+/* Style dropdown options */
+/* Style dropdown container */
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+/* Style dropdown select */
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+  appearance: none; /* Hide default arrow */
+}
+
+/* Style dropdown options */
+select option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style dropdown arrow */
+.dropdown::after {
+  content: '\25BC'; /* Unicode for down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none; /* Ensure arrow does not intercept clicks */
+}
+
+

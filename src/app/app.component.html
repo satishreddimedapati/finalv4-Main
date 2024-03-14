@@ -5,27 +5,31 @@
   <img src="../assets/images/sai.jpeg">
 
 <!-- Popup for Red Users -->
-<div class="popup" *ngIf="isRedUsersPopupOpen">
-  <div class="popup-content">
-    <span>  Red Users List</span>
-    <div class="red-users-list">
-      <div *ngFor="let user of originalData">
+<div class="modal" [class.open]="isRedUsersPopupOpen">
+  <!-- Red Users List Popup -->
+  <div class="red-user-list-popup" *ngIf="isRedUsersPopupOpen">
+    <div class="popup-content">
+      <h2>Red Users List</h2>
+      <ng-container *ngFor="let user of originalData">
         <ng-container *ngIf="isRedUser(user)">
-          <p class="red-user-info" [ngClass]="{'red-user': true}"> (S.No: {{ user.sno }}) {{ user.name }}  - Mobile: {{ user.mobile }}</p>
-          <!-- Add any additional information about red users here -->
+          <div class="red-user">
+            <p class="red-user-info">(S.No: {{ user.sno }}) {{ user.name }} - Mobile: {{ user.mobile }}</p>
+            <!-- Add any additional information about red users here -->
+          </div>
         </ng-container>
-       
-      </div>
+      </ng-container>
+      <button (click)="shareRedUsers('filename')">Share</button>
+      <button (click)="closeRedUsersPopup()">Close</button>
     </div>
-      <button class="sharebutton" (click)="shareRedUsers('filename')">Share</button>
-    <button class="close-button" (click)="closeRedUsersPopup()">Close</button>
   </div>
 </div>
 
 
 
 
-<button (click)="openDataOverviewPopup()">Data Overview</button>
+
+
+<button  (click)="openDataOverviewPopup()">Data Overview</button>
 
 
 <!-- Add this button wherever you want in your HTML template -->
@@ -69,38 +73,75 @@
 </div>
 
 </div>
-<div >
-    <input type="file" (change)="uploadFromExcel($event)" />
+<div class="modal" [class.open]="isWeeklyCollectionPopupOpen">
+  <!-- Upload File Section -->
+  <div class="upload-file-section">
+    <label for="fileInput">Upload File:</label>
+    <input type="file" id="fileInput" (change)="uploadFromExcel($event)" />
   </div>
+  
 
-<div class="filter-section">
-  <label for="sNoInput">Enter S.No: </label>
-  <input type="text" id="sNoInput" [(ngModel)]="userInput" />
-  <button (click)="filterUser()">Filter User</button>
-</div>
-<!-- Date Selection Dropdown -->
-<div class="date-selection-section">
-  <label for="dateInput">Select Date: </label>
-  <select id="dateInput" [(ngModel)]="selectedDate" (change)="onDateSelectionChange(selectedDate)">
-    <option *ngFor="let date of dateHeaders" [value]="date">{{ date }}</option>
-  </select>
-</div>
-<div>
-  <label for="dayOfWeekInput">Select Day of Week:</label>
-  <select id="dayOfWeekInput" [(ngModel)]="selectedDayOfWeekInput">
-    <option value="0">Sunday</option>
-    <option value="1">Monday</option>
-    <option value="2">Tuesday</option>
-    <option value="3">Wednesday</option>
-    <option value="4">Thursday</option>
-    <option value="5">Friday</option>
-    <option value="6">Saturday</option>
-  </select>
-  <button (click)="generateDateHeaders()">Generate Dates</button>
-</div>
-
-<!-- Total Amount Label -->
+  <div class="sidebar">
+    <!-- Date Selection -->
+   
+  
+    <!-- Day of the Week Selection -->
+    <div class="card">
+      <div class="card-content">
+        <div class="label-container">
+          <label for="dayOfWeekInput">Select Day of Week:</label>
+        </div>
+        <div class="dropdown">
+          <select id="dayOfWeekInput" [(ngModel)]="selectedDayOfWeekInput">
+            <option value="0">Sunday</option>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+          </select>
+        </div>
+      </div>
+      <button class="generate-button" (click)="generateDateHeaders()">Generate Dates</button>
+    </div>
+    
+  
+    <!-- Filter Section by S.No -->
+    <div class="card">
+      <div class="card-content">
+        <div class="label-container">
+          <label for="sNoInput">Enter S.No:</label>
+        </div>
+        <input type="text" id="sNoInput" [(ngModel)]="userInput" />
+        <button class="filter-button" (click)="filterUser()">Filter User</button>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="card-content">
+        <div class="label-container">
+          <label for="dateInput">Select Date:</label>
+        </div>
+        <div class="dropdown">
+        <select id="dateInput" [(ngModel)]="selectedDate" (change)="onDateSelectionChange(selectedDate)">
+          <option *ngFor="let date of dateHeaders" [value]="date">{{ date }}</option>
+        </select>
+        </div>
+      </div>
+    </div>
+    <!-- Generate Dates Button -->
+    <div class="card">
+      <div class="card-content">
+        <!-- Total Amount Label -->
 <div class="total-amount-label">Total Amount on Selected Date: {{ getTotalAmountForSelectedDate() }}</div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
 
 <!-- Rest of your existing HTML remains unchanged -->
 
@@ -198,7 +239,7 @@
  <!-- Popup for Data Overview -->
 
  <!-- Data Overview Popup -->
- <div *ngIf="isDataOverviewPopupOpen" class="popup">
+ <div *ngIf="isDataOverviewPopupOpen" class="data-overview-popup">
    <button (click)="navigateToWeeklyCollection()">Weekly Collection</button>
    <button (click)="showRedUsers()">Show Red Users</button>
    <button (click)="navigateToRedUsers()">Users</button>
@@ -209,7 +250,7 @@
 
  <div class="modal" [class.open]="isWeeklyCollectionPopupOpen">
   <!-- Weekly Collection Popup -->
-  <div class="popup" *ngIf="isWeeklyCollectionPopupOpen">
+  <div class="weekly-collection-popup" *ngIf="isWeeklyCollectionPopupOpen">
     <div class="popup-content">
       <!-- Month Selection Dropdown -->
       <div class="month-selection-section">
