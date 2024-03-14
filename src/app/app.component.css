@@ -412,3 +412,17 @@ body {
     font-weight: bold;
   }
   
+  .sharebutton {
+    top: 10px;
+    left: 0px;
+    position: absolute;
+
+  }
+  .accountshare{
+    top: 100px;
+    left: 43px;
+    position: absolute;
+    color: red;
+    background: lightblue;
+}
+  
