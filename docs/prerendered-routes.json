@@ -1,0 +1,8 @@
+{
+  "routes": [
+    "/navigation",
+    "/red-users",
+    "/users-data",
+    "/weekly-collection"
+  ]
+}
