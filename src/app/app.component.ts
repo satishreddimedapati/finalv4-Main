@@ -507,7 +507,71 @@ uploadFromExcel(event: Event): void {
   }
 }
 
+  loadDemoData(): void {
+    const filePath = 'assets/output (55).xlsx'; // Path to the demo file
 
+    fetch(filePath)
+      .then(response => response.blob()) // Convert the file to a Blob
+      .then(blob => {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          const workbook = XLSX.read(e.target.result, { type: 'binary' });
+          const sheetName = workbook.SheetNames[0];
+          const sheet = workbook.Sheets[sheetName];
+
+          const excelData = XLSX.utils.sheet_to_json(sheet);
+
+          this.processedData = excelData.map((excelItem: any) => {
+            const lowerCasedItem = this.convertKeysToLowerCase(excelItem);
+            const commonFields = ['sno', 'name', 'mobile', 'address', 'amount', 'date', 'type'];
+            const commonData: any = {};
+            commonFields.forEach(field => {
+              commonData[field] = lowerCasedItem[field];
+            });
+
+            const additionalDatesData: any = {};
+            this.dateHeaders.forEach(header => {
+              additionalDatesData[header] = lowerCasedItem[header];
+            });
+
+            return { ...commonData, ...additionalDatesData };
+          });
+
+          // Process red users
+          this.processedData.forEach(user => {
+            user.isRed = this.isRedUser(user);
+          });
+
+          // Open installments popups
+          this.originalData = [...this.processedData];
+          this.originalData.forEach(user => {
+            this.openInstallmentsPopups(user);
+          });
+
+          this.changeDetectorRef.detectChanges();
+        };
+
+        reader.readAsBinaryString(blob);
+      })
+      .catch(error => {
+        console.error('Error loading demo file:', error);
+      });
+  }
+  isDemoEnabled = false; // Toggle state
+
+  toggleDemoData(): void {
+    if (this.isDemoEnabled) {
+      this.loadDemoData();
+    } else {
+      this.resetData();
+    }
+  }
+  resetData(): void {
+    this.processedData = [];
+    this.originalData = [];
+    this.uploadedFileName = '';
+    this.changeDetectorRef.detectChanges();
+  }
 
 // Add this method to the component class
 convertKeysToLowerCase(obj: any): any {
