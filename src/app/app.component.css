@@ -706,4 +706,83 @@ select option {
   pointer-events: none; /* Ensure arrow does not intercept clicks */
 }
 
+.upload-file-section {
+  background-color: #f9f9f9; /* Soft background */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #ffffff; /* White background */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+input:checked + .slider {
+  background-color: #007bff; /* Modern blue */
+}
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+input:disabled + .slider {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.toggle-container span {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
 
